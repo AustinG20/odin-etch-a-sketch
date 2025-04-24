@@ -43,10 +43,6 @@ function createGrid(size){
                 }
             })
 
-        /* div.addEventListener("mouseleave", () =>{
-                div.style.backgroundColor = "black";
-            })*/
-
             rowDiv.appendChild(div);
         }
 
