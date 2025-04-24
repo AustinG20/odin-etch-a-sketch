@@ -1,12 +1,15 @@
 const container = document.querySelector(".container");
 container.style.display = "flex";
+container.style.justifyContent = "center";
 container.style.flexWrap = "wrap";
 
 createGrid(16);
 
 const newGrid = document.querySelector(".button");
 newGrid.addEventListener("click", () => {
-    const size = prompt("Please enter new grid size");
+    let size = 0;
+    while(size < 1 || size > 100)
+        size = prompt("Please enter new grid size");
     
     while(container.firstChild){
         container.removeChild(container.lastChild);
@@ -29,8 +32,15 @@ function createGrid(size){
             div.style.aspectRatio = "1/1";
             div.style.margin = "5px";
 
-            div.addEventListener("mouseover", () => {
-                div.style.backgroundColor = "blue";
+            div.addEventListener("mouseenter", () => {
+                if(div.style.backgroundColor == "black"){
+                    div.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
+                    div.style.opacity = Math.random();
+                }
+
+                if(div.style.opacity >= 0 && div.style.opacity < 1){
+                    div.style.opacity = Number(div.style.opacity) + 0.1;
+                }
             })
 
         /* div.addEventListener("mouseleave", () =>{
